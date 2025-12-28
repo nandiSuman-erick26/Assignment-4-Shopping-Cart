@@ -6,10 +6,11 @@ import {
 import { products } from "../utils/json/products";
 import Card from "../components/Card";
 import CartDrawer from "../components/CartDrawer";
-import { useContext, useState } from "react";
+import {useContext, useState } from "react";
 import { CartContext } from "../hooks/context/Cart.create";
 
 import type { Product } from "../typescript/interface/product.interface";
+import { toast } from "sonner";
 
 const LandingPage = () => {
   const context = useContext(CartContext);
@@ -28,7 +29,10 @@ const LandingPage = () => {
       total_price: Number(item.product_price),
     };
     addItemToCart(productDetail);
+    toast.success("Item added Successfully!");
   };
+
+ 
   return (
     <Box
       sx={{

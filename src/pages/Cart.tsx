@@ -11,6 +11,7 @@ import {
   Trash2,
 } from "lucide-react";
 import type { ProductDetail } from "../typescript/interface/cart.reducer.interface";
+import { toast } from "sonner";
 
 const Cart = () => {
   const context = useContext(CartContext);
@@ -28,9 +29,16 @@ const Cart = () => {
 
   const handleProductDelete = (data: ProductDetail) => {
     removeItem(data);
+    toast.success("Item removed!");
   };
   const handleEmptyCart = () => {
     emptyCart();
+    toast.warning("Your cart is now empty!");
+  };
+  const handleProceedPay = () => {
+    toast.warning(
+      "This window is under-development! Sorry for the inconvenience!"
+    );
   };
 
   const totalPrice = cartState?.cart.reduce(
@@ -162,6 +170,7 @@ const Cart = () => {
                     transform: "translateY(-2px)",
                   },
                 }}
+                onClick={handleProceedPay}
               >
                 <Typography sx={{ fontSize: 15, fontWeight: 500 }}>
                   Proceed to Buy
