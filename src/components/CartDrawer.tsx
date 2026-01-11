@@ -179,10 +179,9 @@ const CartDrawer: React.FC<{ open: boolean; onClose: () => void }> = ({
                         onClick={() => decreaseQuantity(item)}
                         sx={{
                           cursor:
-                            item?.product_qty <= 1 ? "not-allowed" : "pointer",
-                          display: "flex",
+                            item?.product_qty === 1 ? "not-allowed" : "pointer",
+                          display: item?.product_qty === 1 ? "none" : "flex",
                           alignItems: "center",
-                          opacity: item?.product_qty <= 1 ? 0.5 : 1,
                           transition: "transform 0.2s",
                           ":hover": {
                             transform:

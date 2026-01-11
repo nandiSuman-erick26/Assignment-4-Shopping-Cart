@@ -303,15 +303,14 @@ const Cart = () => {
                     flexShrink: 0,
                   }}
                 >
-                  <Box
+                  <Box 
                     onClick={() => decreaseQuantity(item)}
                     sx={{
                       cursor:
-                        item?.product_qty <= 1 ? "not-allowed" : "pointer",
-                      display: "flex",
+                        item?.product_qty === 1 ? "not-allowed": "pointer",
+                      display: item?.product_qty === 1 ? "none" : "flex",
                       alignItems: "center",
                       transition: "transform 0.2s",
-                      opacity: item?.product_qty <= 1 ? 0.5 : 1,
                       ":hover": {
                         transform:
                           item?.product_qty > 1 ? "scale(1.2)" : "none",
